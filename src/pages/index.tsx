@@ -28,6 +28,7 @@ import {
   feature,
   LineString
 } from "@turf/helpers";
+import { actions as curblrActions, geoDataFiles } from "../models/curblr";
 
 var mapboxAccessToken =
   "pk.eyJ1Ijoic2FhZGlxbSIsImEiOiJjamJpMXcxa3AyMG9zMzNyNmdxNDlneGRvIn0.wjlI8r1S_-xxtq2d-W5qPA";
@@ -411,6 +412,18 @@ class Map extends React.Component<PageProps, {}> {
     this._setMapData(data);
   };
 
+  changeGeoData = async (value) => {
+    console.log('COUCOU', value)
+    await this.props.dispatch(curblrActions.fetchGeoData(value));
+    var data = renderCurblrData(
+      this.props.curblr.data,
+      this.state.day,
+      this.state.time,
+      this.state.mode
+    );
+    this._setMapData(data);
+  }
+
   render() {
     const { viewport, mapStyle, day, time, mode } = this.state;
 
@@ -632,6 +645,13 @@ class Map extends React.Component<PageProps, {}> {
             <Select.Option value="23:01">23:00</Select.Option>
           </Select>
           <br />
+          <Select onChange={this.changeGeoData}>
+            {React.Children.toArray(geoDataFiles.map((f) =>
+              <Select.Option value={f.path}>
+                {f.label}
+              </Select.Option>
+            ))}
+          </Select>
           <br />
           View by:{" "}
           <Radio.Group

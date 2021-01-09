@@ -75,7 +75,7 @@ export function filterCurblrData (
 
     for(let curbFeatures of sortedCurbFeatures.values()){
         let filteredFeatures: CurbFeature[] = [];
-
+        //console.log('COUCOU curblrData:', data);
         curbFeatures.sort((a, b) => data.manifest.priorityHierarchy.indexOf(a.properties.regulations[0].rule.priorityCategory) - data.manifest.priorityHierarchy.indexOf(b.properties.regulations[0].rule.priorityCategory));
 
         while(curbFeatures.length>0){

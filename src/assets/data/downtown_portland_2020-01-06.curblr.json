@@ -3,6 +3,7 @@
     "createdDate": "2019-12-30T11:40:45Z",
     "lastUpdatedDate": "2019-12-30T17:40:45Z",
     "timeZone": "America/Los_Angeles",
+    "priorityHierarchy": ["no standing", "construction", "temporary restriction", "restricted standing", "standing", "no parking", "restricted loading", "loading", "restricted parking", "paid parking", "free parking"],
     "currency": "USD",
     "authority": {
       "name": "Portland Bureau of Transportation",
